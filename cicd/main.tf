@@ -89,7 +89,7 @@ module "records" {
       ttl     = 1
       allow_overwrite = true
       records = [
-        module.nexus.private_ip
+        module.nexus.public_ip
       ]
       allow_overwrite = true
     }
