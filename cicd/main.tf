@@ -4,8 +4,8 @@ module "jenkins" {
   name = "jenkins-tf"
 
   instance_type          = "t3.small"
-  vpc_security_group_ids = ["sg-09e8efa81cc5a4212"]
-  subnet_id              = "subnet-0bdd1d160186d14c7"
+  vpc_security_group_ids = ["sg-0275537a7daadb330"]
+  subnet_id              = "subnet-0a5f6d6293341f595"
   ami = data.aws_ami.ami_info.id
   user_data = file("jenkins.sh")
   tags = {
@@ -19,8 +19,8 @@ module "jenkins-agent" {
   name = "jenkins-agent"
 
   instance_type          = "t3.small"
-  vpc_security_group_ids = ["sg-09e8efa81cc5a4212"]
-  subnet_id              = "subnet-0bdd1d160186d14c7"
+  vpc_security_group_ids = ["sg-0275537a7daadb330"]
+  subnet_id              = "subnet-0a5f6d6293341f595"
   ami = data.aws_ami.ami_info.id
   user_data = file("jenkins-agent.sh")
   tags = {
@@ -42,9 +42,9 @@ module "nexus" {
   name = "nexus"
 
   instance_type          = "t3.medium"
-  vpc_security_group_ids = ["sg-09e8efa81cc5a4212"]
+  vpc_security_group_ids = ["sg-0275537a7daadb330"]
   # convert StringList to list and get first element
-  subnet_id = "subnet-0bdd1d160186d14c7"
+  subnet_id = "subnet-0a5f6d6293341f595"
   ami = data.aws_ami.nexus_ami_info.id
   key_name = aws_key_pair.tools.key_name
   root_block_device = [
